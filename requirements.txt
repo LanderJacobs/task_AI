@@ -1,2 +1,2 @@
-simpleai==0.8.3
+simpleai==0.7.0
 streamlit
