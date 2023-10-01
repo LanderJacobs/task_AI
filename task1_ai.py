@@ -1,4 +1,4 @@
-from simpleai.search import CspProblem, backtrack
+# from simpleai.search import CspProblem, backtrack
 import streamlit as st
 
 # moet hier staan anders doet het vreemd
