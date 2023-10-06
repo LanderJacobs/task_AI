@@ -17,9 +17,7 @@ def try_solve():
     # constraints
         # constraint dat de som moet kloppen
     def check_sum(variables, values):
-        sum_words = 0
-        for word in word_list[:-1]:
-            sum_words += find_amount(word, values)
+        sum_words = sum(find_amount(word, values) for word in word_list[:-1])
         return sum_words == find_amount(word_list[len(word_list)-1], values)
 
     def find_amount(word, values):
