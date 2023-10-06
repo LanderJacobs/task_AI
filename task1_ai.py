@@ -1,7 +1,25 @@
 from simpleai.search import CspProblem, backtrack
 import streamlit as st
 
-# moet hier staan anders doet het vreemd
+st.title("Cryptarithmetic Puzzle solver")
+st.subheader("van Lander Jacobs")
+word1 = st.text_input(label="word 1", placeholder="odd")
+word2 = st.text_input(label="word 2", placeholder="odd")
+solution = st.text_input(label="solution", placeholder="even")
+
+if st.button(label="Solve it"):
+    if(word1 != "" or word2 != "" or solution != ""):
+        answer = try_solve()
+        if answer == None:
+            st.text("We Weren't able to solve this one")
+        elif answer == "long":
+            st.text("There were more than 9 characters, this doesn't make it possible to be solved")
+        else:
+            st.text(word1 + " + " + word2 + " = " + solution)
+            st.text(answer[0] + " + " + answer[1] + " = " + answer[2])
+    else:
+        st.text("You forgot to fill in a word!")
+
 def try_solve():
     word_list = [word1, word2, solution]
     # variables
@@ -46,23 +64,3 @@ def try_solve():
         return output
     else:
         return [str(find_amount(x, [output[y] for y in letters])) for x in word_list]
-
-st.title("Cryptarithmetic Puzzle solver")
-st.subheader("van Lander Jacobs")
-word1 = st.text_input(label="word 1", placeholder="odd")
-word2 = st.text_input(label="word 2", placeholder="odd")
-solution = st.text_input(label="solution", placeholder="even")
-
-if st.button(label="Solve it"):
-    if(word1 != "" or word2 != "" or solution != ""):
-        answer = try_solve()
-        if answer == None:
-            st.text("We Weren't able to solve this one")
-        elif answer == "long":
-            st.text("There were more than 9 characters, this doesn't make it possible to be solved")
-        else:
-            st.text(word1 + " + " + word2 + " = " + solution)
-            st.text(answer[0] + " + " + answer[1] + " = " + answer[2])
-    else:
-        st.text("You forgot to fill in a word!")
-
